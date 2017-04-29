@@ -6,7 +6,7 @@ Created on Fri Apr 28 21:04:11 2017
 @author: arunnekkalapudi
 """
 
-# 1.6 Make a dictionary that maps ey to more than one value \
+# 1.6 Make a dictionary that maps keys to more than one value \
 
 # Example: List 
 d = {
@@ -145,4 +145,98 @@ print(top)
 
 # 1.13 Sorting List of dictionaries based on one or more dictionary values.
 
+from operator import itemgetter
 
+rows = [
+        {'fname':'Brian','lanme':'David' ,'uid' : '1003'},
+        {'fname':'Bgg','lanme':'Boogy' ,'uid' : '1002'},
+        {'fname':'David','lanme':'David' ,'uid' : '1006'},
+        {'fname':'John','lanme':'Bravo' ,'uid' : '1001'}
+        ]
+
+
+print(sorted(rows,key = itemgetter('fname')))
+print(sorted(rows,key = itemgetter('fname','lanme','uid')))
+
+
+# 1.14
+
+# 1.15 Grouping records based on a field.
+
+from operator import itemgetter
+from itertools import groupby 
+
+rows1 = [
+        {'fname':'Brian','lanme':'David' ,'uid' : '1002'},
+        {'fname':'Bgg','lanme':'Boogy' ,'uid' : '1002'},
+        {'fname':'David','lanme':'David' ,'uid' : '1006'},
+        {'fname':'David','lanme':'David' ,'uid' : '1006'},
+        {'fname':'David','lanme':'David' ,'uid' : '1006'},
+        {'fname':'John','lanme':'Bravo' ,'uid' : '1001'}
+        ]
+
+for uid,items in groupby(rows1,key=itemgetter('uid')):
+    print(uid,items)
+    for i in items:
+        print('   ',i)
+        
+# 1.16 Filtering elements in a list based on a criteria.
+
+# Example 1 
+myList = [1,4,5-1,-3,-2,3,5,-9,9] 
+filteredList = [n for n in myList if n>0]       
+print(filteredList)
+
+# Example 2 
+values = [1,2,3,'4','N/A','5',9,3,2]
+
+def is_int(value):
+    try:
+        int(value)
+        return True
+    except ValueError:
+        return False
+print(list(filter(is_int,values)))
+
+# 1.17 To make a dictionary that is subset of another Dictionary.
+prices = {
+        'ACME' : 45.23,
+        'AAPL' : 612.78,
+        'IBM' : 205.55,
+        'HPQ' : 37.20,
+        'FB':10.75
+        }   
+
+P1 = {Key:Value for Key,Value in prices.items() if Value > 200}
+print(P1)
+
+# 1.18 Mapping Names to Sequence of Elements.
+
+# Example 1: Named Tuple - How cool if we create our own tuples.
+
+from collections import namedtuple 
+
+Subscriber = namedtuple('Fullname',['First','Last'])
+sub1 = Subscriber('Arun','Nekkalapudi')
+sub2 = Subscriber('Varun','Zack')
+sub3 = Subscriber('Venkat','Manchikalapudi')
+print(sub1)
+print(sub2)
+print(sub3)
+
+print(sub1.First)
+print(sub1.Last)
+
+# 1.19 Transforming and Reducing the data at the same time.
+
+nums = [1,2,3,4,5,56,71,3,45]
+
+s = sum(x*x for x in nums)
+print(s)
+
+#1.20
+
+    
+
+
+ 
