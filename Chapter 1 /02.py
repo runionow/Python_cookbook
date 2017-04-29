@@ -79,9 +79,70 @@ prices = {
         'IBM' : 205.55,
         'HPQ' : 37.20
         }    
+print(prices.values())
+print(prices.keys())
+print(type(prices.keys()))
+print(min(zip(prices.keys(),prices.values())))
+print(sorted(zip(prices.keys(),prices.values())))
+
+# 1.9 Find Commonolities in Dictionary
+
+a = {
+    'x' : 1,
+    'y' : 2,
+    'z' : 3,
+    'a' : 4
+    }
+
+b = {
+    'x' : 1,
+    'y' : 2,
+    'z' : 3,
+    'w' : 4 
+    }
+
+# Finding keys in common
+print(a.keys() & b.keys())
+
+# Finding keys that are not in b  
+print(a.keys() - b.keys())
+
+# Finding Key value pairs in common 
+print(a.items() & b.items()) 
 
 
 
+# 1.10 Eliminate duplicate values in a Sequence.
 
+a = [1,5,2,1,4,5,7,8,9,0,1]
+# The answer in here is very simple.
+
+# Converting a list to set will elimante duplicate values.
+b = set(a)
+print(b)
+
+# 1.11 Naming a Slice.
+record = '29375692374697234906723987923876908237469802347698023746987326'
+SHARES = slice(0,10,2)
+PRICE = slice(12,20)
+
+print(record[SHARES])
+print(record[PRICE])
+
+
+cost = int(record[SHARES]) * float(record[PRICE])
+print(cost)
+
+# 1.12 Most Frequently occuring Items in a Sequence.
+from collections import Counter 
+
+words = ['rambo','eyes','look' ,'into' ,'my' ,'eyes','look' ,'into' ,'my' ,'eyes','look' ,'into' ,'my' ,'eyes']
+word_counts = Counter(words)
+top_three = word_counts.most_common(3) # Returns Top 3 in the form of a tuple.
+top =  word_counts.most_common() # Returns the count of every single word in the form of Tuple
+print(top_three)
+print(top)
+
+# 1.13 Sorting List of dictionaries based on one or more dictionary values.
 
 
